@@ -16,6 +16,7 @@ import ResultScreen from "./screens/ResultScreen";
 import Plash from "./screens/Plash";
 import LoginScreen from "./screens/Login";
 import RegisterScreen from "./screens/Register";
+import AdminScreen from "./screens/Admin";
 import DrawerViewScreen from "./components/DrawerView";
 
 const Tab = createBottomTabNavigator();
@@ -58,6 +59,13 @@ function TabNavigator() {
       <Tab.Screen
         name="Register"
         component={RegisterScreen}
+        options={{
+          tabBarButton: () => null,
+        }}
+      />
+      <Tab.Screen
+        name="Admin"
+        component={AdminScreen}
         options={{
           tabBarButton: () => null,
         }}
@@ -141,6 +149,7 @@ function StackNavigator() {
       <Stack.Screen name="resultScreen" component={ResultScreen} />
       <Stack.Screen name="login" component={LoginScreen} />
       <Stack.Screen name="register" component={RegisterScreen} />
+      <Stack.Screen name="admin" component={AdminScreen} />
     </Stack.Navigator>
   );
 }

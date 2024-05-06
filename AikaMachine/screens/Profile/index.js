@@ -100,21 +100,27 @@ export default function Profile({ navigation }) {
               <Text className="text-white text-sm font-bold">Log out</Text>
             </TouchableOpacity>
           </View>
+          {userInfo.role == 0 && (
+            <TouchableOpacity
+              onPress={() => navi.navigate("Admin")}
+              className=" w-[80] h-[40] flex justify-center items-center rounded-md bg-blue-500 my-2"
+            >
+              <Text className="text-white text-sm font-bold">Admin page</Text>
+            </TouchableOpacity>
+          )}
 
           <View className="w-full h-[240] border-b border-gray-300 flex items-center mt-10">
             <View>
-              {userInfo.role == 1 ? (
+              {userInfo.role == 0 ? (
                 <Image
                   className="rounded-full object-cover w-[150] h-[150] my-3"
                   // nhó thay chỗ này
-                  source={{ uri: `${temptAvatar}` }}
-                />
-              ) : (
-                <Image
                   source={{ uri: `${adminAvatar}` }}
-                  width={60}
-                  height={0}
                 />
+              ) : userInfo.role == 1 ? (
+                <Image source={{ uri: `${temptAvatar}` }} />
+              ) : (
+                <></>
               )}
               <View>
                 <Text className="text-center text-xl font-bold">

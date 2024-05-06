@@ -1,4 +1,6 @@
 import axios from "./express.service";
+
+// done
 export const Login = async (form) => {
   try {
     const res = await axios.post("/user/login", form);
@@ -10,6 +12,7 @@ export const Login = async (form) => {
   }
 };
 
+// done
 export const LogOut = async (userId) => {
   try {
     const res = await axios.patch(`/user/logOut/${userId}`);
@@ -21,11 +24,22 @@ export const LogOut = async (userId) => {
   }
 };
 
+// done
 export const updateInfo = async (userId, updatedInfo) => {
   try {
     const res = await axios.patch(`/user/updateInfo/${userId}`, updatedInfo);
     return res.data;
   } catch (error) {
     console.log("Lỗi tại hàm updateInfo ở client", error);
+  }
+};
+
+// done
+export const Register = async (regisForm) => {
+  try {
+    const res = await axios.post("/user/register", regisForm);
+    return res.data;
+  } catch (error) {
+    console.log("Lỗi tại hàm Register ở client", error);
   }
 };

@@ -41,20 +41,23 @@ class UserController {
     }
   }
 
+  // done
   async register(req, res) {
     try {
       const duplicateMail = await UserModel.findOne({ email: req.body.email });
+      console.log(req.body);
       if (duplicateMail) {
         return res.status(404).send("email existed!");
       }
       const newUser = await UserModel.create({ ...req.body });
-      res.send({ userInfo: newUser });
+      res.send(newUser);
+      console.log("new user", newUser);
     } catch (error) {
       console.log(error);
       res.status(500).send("create user failed");
     }
   }
-
+  // done
   async updateInfo(req, res) {
     const userId = req.params._id;
     try {
@@ -107,12 +110,13 @@ class UserController {
         {},
         "-historyPredict -isLogin -role -password -__v"
       );
-      res.send({ userList: users });
+      res.send(users);
     } catch (error) {
       console.log(error);
     }
   }
 
+  // done
   async logOut(req, res) {
     try {
       const userId = req.params._userId;
@@ -130,10 +134,6 @@ class UserController {
       console.log(error);
       res.send(error);
     }
-  }
-
-  async changeAvatar(req, res) {
-    return;
   }
 }
 
