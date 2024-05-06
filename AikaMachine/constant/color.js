@@ -1,0 +1,3 @@
+const PRIMARY_BACKGROUND_COLOR = "blue-500";
+
+export { PRIMARY_BACKGROUND_COLOR };

@@ -1,0 +1,8 @@
+1.  xóa bỏ chức năng tìm kiếm => thay  bằng dropdown menu hoặc 1 hình ảnh logo
+2.  thêm sidebar
+3.  đăng nhập đăng ký
+4.  Thông tin cá nhân => quản lí thông tin cá nhân
+5.  lịch sử dự đoán của cá nhân
+6.  chức năng lưu lịch sử  dự đoán
+7. chức năng quản lí user cho admin
+8. chức năng góp ý = comment
