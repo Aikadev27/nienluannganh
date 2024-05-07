@@ -20,8 +20,7 @@ const contrunghailua_image =
 const emptyImageModel =
   "https://www.simplilearn.com/ice9/free_resources_article_thumb/React_Native_Tutorial.jpg";
 
-const adminImg =
-  "https://static.vecteezy.com/system/resources/previews/009/784/096/original/avatar-with-gear-flat-design-icon-of-manager-vector.jpg";
+const adminImg = "https://cdn-icons-png.flaticon.com/512/1253/1253685.png";
 
 const normalImg =
   "https://elakeviewcenter.org/wp-content/uploads/sites/2/2022/09/person.png";
@@ -30,7 +29,7 @@ const modelList = [
     id: 1,
     imgUri: benhtrenlua_image,
     modelName: "Bệnh trên lúa ",
-    desc: "nhận dạng và phân loại bệnh do vi khuẩn trên cây lúa",
+    desc: "nhận biết và phân loại các loại bệnh thường gặp trên cây lúa bằng các đặc điểm , biểu hiện có trên lá lúa",
     api: "benhtrenlua",
     disable: false,
   },
@@ -38,7 +37,7 @@ const modelList = [
     id: 2,
     imgUri: contrunghailua_image,
     modelName: "Côn Trùng Hại Lúa",
-    desc: "model côn trùng hại lúa",
+    desc: "nhận biết và phân loại côn trùng gây hại trên cây lúa",
     api: "contrunghailua",
     disable: false,
   },

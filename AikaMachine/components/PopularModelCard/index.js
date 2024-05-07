@@ -40,7 +40,7 @@ export default function PopularModelCard({
         </View>
       </TouchableOpacity>
       <Text className="font-bold text-orange-400 text-sm uppercase my-1">
-        Tên mô hình: <Text className="text-white lowercase">{modelName}</Text>
+        Phân Loại: <Text className="text-white lowercase">{modelName}</Text>
       </Text>
       <View>
         <Text
@@ -48,8 +48,7 @@ export default function PopularModelCard({
           ellipsizeMode="tail"
           numberOfLines={2}
         >
-          Mô tả tính năng:{" "}
-          <Text className="text-white  lowercase ">{desc}</Text>
+          Chức Năng: <Text className="text-white  lowercase ">{desc}</Text>
         </Text>
       </View>
     </View>

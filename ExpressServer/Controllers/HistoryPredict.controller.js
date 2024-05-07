@@ -1,18 +1,27 @@
+const mongoose = require("mongoose");
 const HistoryModel = require("../Models/HistoryPredict.model");
 const UserModel = require("../Models/User.model");
 
 class HistoryPredictController {
   async saveResultToHistory(req, res) {
     try {
-      const userId = req.params._id;
+      const userId = req.params._userId;
+      console.log(userId);
+      if (!mongoose.Types.ObjectId.isValid(userId)) {
+        console.log("loi user Id");
+        return res.status(400).send("Invalid userId");
+      }
+
       const saveResult = req.body;
+      console.log(saveResult);
       const foundUser = await UserModel.findById(userId);
       if (!foundUser) {
         res.status(404).send("user not found");
       }
-      foundUser.historyPredict.push(saveResult);
+      // foundUser.historyPredict.push([saveResult]);
+      foundUser.historyPredict = [...foundUser.historyPredict, saveResult];
       await foundUser.save();
-      res.status(200).send("saved result to history prediction");
+      res.send(saveResult);
     } catch (error) {
       console.log(error);
       res.status(500).send("save result to history is failed!");
@@ -27,6 +36,7 @@ class HistoryPredictController {
         res.status(404).send("user not found");
       }
       const predictList = foundUser.historyPredict;
+
       res.send(predictList);
     } catch (error) {
       console.log(error);
@@ -70,7 +80,7 @@ class HistoryPredictController {
         return res.status(404).send("Người dùng không được tìm thấy");
       }
 
-      res.status(200).send("Tất cả lịch sử đã được xóa thành công");
+      res.send("đã xóa tất cả lịch sử dự đoán");
     } catch (error) {
       console.log(error);
       res.status(500).send("Lỗi khi xóa lịch sử");

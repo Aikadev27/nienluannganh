@@ -107,6 +107,7 @@ export default function ModelDetail({ route }) {
         label: label,
         accuracy: acc,
         imageUri: pickedImage,
+        modelName: modelName,
       });
     } catch (error) {
       console.error("Error sending image to server:", error);
@@ -161,7 +162,7 @@ export default function ModelDetail({ route }) {
           </Text>
           <View>
             <Text className="text-orange-600 uppercase text-sm mt-3 mx-2">
-              Tên mô hình:
+              Phân Loại:
               <Text className="lowercase text-sm text-white text-wrap">
                 {" "}
                 {modelName}
@@ -170,7 +171,7 @@ export default function ModelDetail({ route }) {
           </View>
           <View>
             <Text className="text-orange-600 uppercase text-sm mt-3 mx-2">
-              mô tả về tính năng:
+              Chức Năng:
               <Text className="lowercase text-sm text-white text-wrap">
                 {" "}
                 {desc}

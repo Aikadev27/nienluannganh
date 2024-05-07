@@ -1,3 +1,5 @@
+import { NativeModules, Platform } from "react-native";
+
 export const Country = [
   {
     key: 1,
@@ -252,3 +254,13 @@ export const Country = [
     value: "Yên Bái",
   },
 ];
+
+export const reloadApp = () => {
+  if (Platform.OS === "android") {
+    // Reload trên Android
+    NativeModules.DevSettings.reload(); // Sử dụng DevSettings.reload() để reload ứng dụng
+  } else {
+    // Reload trên iOS
+    // Sử dụng các phương thức reload khác cho iOS
+  }
+};

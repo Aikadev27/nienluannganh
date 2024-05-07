@@ -1,10 +1,11 @@
-const { Schema, model, Types } = require("mongoose");
+// const { Schema, model, Types } = require("mongoose");
+const { model, Schema } = require("mongoose");
 
 const HistoryPredictSchema = new Schema({
-  modelName: { type: String },
-  predictImage: { type: String },
-  labelResult: { type: String },
-  accuracy: { type: Number },
+  modelName: String,
+  predictImage: String,
+  labelResult: String,
+  accuracy: Number,
 });
 
 module.exports = model("HistoryPredict", HistoryPredictSchema);

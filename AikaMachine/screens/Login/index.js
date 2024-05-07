@@ -11,12 +11,12 @@ import { useNavigation } from "@react-navigation/native";
 import { Login } from "../../services/auth.service";
 import { useState } from "react";
 import { storageData } from "../../services/storage.service";
+import { reloadApp } from "../../util/country";
 
 export default function LoginScreen() {
   const navigation = useNavigation();
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
-  // const [isLoginSuccess, setIsLoginSuccess] = useState(false);
 
   const handleGoHome = () => {
     navigation.navigate("Home");
@@ -40,7 +40,10 @@ export default function LoginScreen() {
       Alert.alert("Notification", "Login Success!", [
         {
           text: "Back Home",
-          onPress: () => handleGoHome(),
+          onPress: () => {
+            reloadApp();
+            handleGoHome();
+          },
         },
       ]);
       // Alert.alert("Notification", "Login Success!");

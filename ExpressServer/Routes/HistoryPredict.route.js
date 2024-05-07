@@ -7,7 +7,7 @@ router.get(
   HistoryPredictController.getHistoryPredict
 );
 router.post(
-  "/saveResultToHistory/:_id",
+  "/saveResultToHistory/:_userId",
   HistoryPredictController.saveResultToHistory
 );
 

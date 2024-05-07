@@ -12,9 +12,17 @@ const UserSchema = new Schema(
     about: String,
     isLogin: { type: Boolean, default: false },
     role: { type: Number, default: 1 },
-    historyPredict: [
-      { type: Schema.Types.ObjectId, ref: "HistoryPredict", default: [] },
-    ],
+    historyPredict: {
+      type: [
+        {
+          modelName: String,
+          predictImage: String,
+          labelResult: String,
+          accuracy: Number,
+        },
+      ],
+      default: [],
+    },
   },
   {
     timestamps: false,

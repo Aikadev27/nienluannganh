@@ -4,14 +4,64 @@ import {
   SafeAreaView,
   Image,
   TouchableOpacity,
+  Alert,
 } from "react-native";
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Icon from "react-native-vector-icons/FontAwesome";
-import { useNavigation } from "@react-navigation/native";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
+import { getData } from "../../services/storage.service";
+import { saveResultToHistory } from "../../services/historyPredict.service";
 
 export default function ResultScreen({ route }) {
-  const { label, accuracy, imageUri } = route.params;
+  const { label, accuracy, imageUri, modelName } = route.params;
+  const [isLogin, setIsLogin] = useState(false);
   const navigation = useNavigation();
+
+  const [userId, setUserId] = useState(null);
+
+  useEffect(() => {
+    const fecthUserStore = async () => {
+      const data = await getData("user-info");
+      if (data) {
+        setUserId(data.userId);
+        setIsLogin(true);
+      }
+      if (data === null) {
+        setIsLogin(false);
+      }
+    };
+    fecthUserStore();
+  }, [userId]);
+
+  useFocusEffect(
+    useCallback(() => {
+      if (!userId || userId === null) {
+        console.log("userId không nhận được");
+      } else {
+        // fetchUserData(userId);
+        console.log(userId);
+      }
+    }, [userId])
+  );
+
+  const handleSaveResultToHistory = async () => {
+    try {
+      img = imageUri.toString();
+      const formData = {
+        labelResult: label,
+        accuracy: accuracy,
+        predictImage: img,
+        modelName: modelName,
+      };
+      const resData = await saveResultToHistory(userId, formData);
+      if (resData) {
+        Alert.alert("Đã Lưu Thành Công");
+        console.log("save thanh cong roi");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <SafeAreaView className="flex-1 px-2 bg-black">
@@ -42,8 +92,9 @@ export default function ResultScreen({ route }) {
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
-          className="w-[100] h-[50] bg-gray-500 flex flex-row items-center justify-center rounded-xl "
-          disabled={true}
+          className="w-[100] h-[50] bg-blue-500 flex flex-row items-center justify-center rounded-xl "
+          // disabled={true}
+          onPress={handleSaveResultToHistory}
         >
           <Text>
             <Icon name="bookmark" size={30} color={"white"} />
