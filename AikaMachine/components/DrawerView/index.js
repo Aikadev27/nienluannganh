@@ -14,12 +14,12 @@ const NavigateList = [
     navigateTo: "History",
   },
   {
-    label: "REGISTER",
-    navigateTo: "Register",
+    label: "PROFILE",
+    navigateTo: "Profile",
   },
   {
-    label: "LOGIN",
-    navigateTo: "Login",
+    label: "ABOUT APP AND HOW TO USE",
+    navigateTo: "AboutApp",
   },
 ];
 

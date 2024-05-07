@@ -97,7 +97,7 @@ class UserController {
       if (!user) {
         return res.status(404).send("user not found");
       }
-      res.status(200).json({ message: "delete user success" });
+      res.send("da xoa user");
     } catch (err) {
       console.error(err.message);
       res.status(500).send("Server Error");
@@ -108,7 +108,7 @@ class UserController {
     try {
       const users = await UserModel.find(
         {},
-        "-historyPredict -isLogin -role -password -__v"
+        "-historyPredict -isLogin  -password -__v"
       );
       res.send(users);
     } catch (error) {

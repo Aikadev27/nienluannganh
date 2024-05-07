@@ -109,7 +109,13 @@ export default function Profile({ navigation }) {
             </View>
             {userInfo.role == 0 && (
               <TouchableOpacity
-                onPress={() => navi.navigate("Admin")}
+                onPress={() =>
+                  navi.navigate("Admin", {
+                    adminName: userInfo.fullName,
+                    email: userInfo.email,
+                    userId: userInfo.userId,
+                  })
+                }
                 className=" w-[80] h-[40] flex justify-center items-center rounded-md bg-blue-500 my-2"
               >
                 <Text className="text-white text-sm font-bold">Admin page</Text>

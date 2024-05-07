@@ -18,6 +18,7 @@ import LoginScreen from "./screens/Login";
 import RegisterScreen from "./screens/Register";
 import AdminScreen from "./screens/Admin";
 import DrawerViewScreen from "./components/DrawerView";
+import AboutAppScreen from "./screens/AboutApp";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -66,6 +67,13 @@ function TabNavigator() {
       <Tab.Screen
         name="Admin"
         component={AdminScreen}
+        options={{
+          tabBarButton: () => null,
+        }}
+      />
+      <Tab.Screen
+        name="AboutApp"
+        component={AboutAppScreen}
         options={{
           tabBarButton: () => null,
         }}
@@ -150,6 +158,7 @@ function StackNavigator() {
       <Stack.Screen name="login" component={LoginScreen} />
       <Stack.Screen name="register" component={RegisterScreen} />
       <Stack.Screen name="admin" component={AdminScreen} />
+      <Stack.Screen name="aboutApp" component={AboutAppScreen} />
     </Stack.Navigator>
   );
 }

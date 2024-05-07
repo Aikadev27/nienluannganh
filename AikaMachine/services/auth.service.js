@@ -43,3 +43,24 @@ export const Register = async (regisForm) => {
     console.log("Lỗi tại hàm Register ở client", error);
   }
 };
+
+// get all uer from db
+
+export const getAllMember = async () => {
+  try {
+    const res = await axios.get("/user/getAllUser");
+
+    return res.data;
+  } catch (error) {
+    console.log("Lỗi ở hàm get all member", error);
+  }
+};
+
+export const deleteOneUserById = async (userId) => {
+  try {
+    const res = await axios.delete(`/user/deleteOneUser/${userId}`);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+};

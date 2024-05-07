@@ -45,6 +45,7 @@ export default function PredictionHistory({ navigation }) {
   useFocusEffect(
     useCallback(() => {
       if (!userId || userId === null) {
+        return;
       } else {
         fetchUserData(userId);
         setStatus(true);
