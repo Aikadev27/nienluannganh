@@ -31,6 +31,7 @@ export default function ModelDetail({ route }) {
   const saveImage = async (image) => {
     try {
       setPickedImage(image);
+      // console.log(image);
       setIsModalVisible(false);
     } catch (error) {
       throw error;
@@ -84,6 +85,7 @@ export default function ModelDetail({ route }) {
       );
       return;
     }
+    // console.log(pickedImage);
     try {
       const formData = new FormData();
       const uriParts = pickedImage.split(".");
@@ -101,7 +103,7 @@ export default function ModelDetail({ route }) {
       });
       const label = response.data.result.label;
       const acc = response.data.result.accuracy;
-      // console.log("Server Response:", response.data);
+      console.log("Server Response:", response.data);
 
       navigation.navigate("resultScreen", {
         label: label,
